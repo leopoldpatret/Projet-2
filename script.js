@@ -2,35 +2,35 @@
 //Équipier 2 : Leopold Patret - 20137744
 
 		//// DIFFERENTES FONCTIONS ////
-var validateUsername= function (value){
+var validateUsername= function (value){			//valider le nom d'utilisateur
 
 
 }
-var validatePassword= function (value){
+var validatePassword= function (value){			//valider le mot de passe
 
 
 } 
-var updateHeader = function (username){
+var updateHeader = function (username){			//mettre à jour le nom d'utilisateur dans le <header>
 
 
 }
-var searchMovies = function (movies,searchValue){
+var searchMovies = function (movies,searchValue){		//retourner une liste de films dont le titre contient les caractères tappés dans la barre de recherche.
 
 
 }
-var sortMovies = function (movies,isAscending){
+var sortMovies = function (movies,isAscending){			//retourner une liste de films triée.
 
 
 }
-var populateSelect = function( movies ) {
+var populateSelect = function( movies ) {			//retourner une liste de tous les genres (string) disponibles
 
 
 }
-var filterMovies = function(movies,genreFilter){
+var filterMovies = function(movies,genreFilter){		//appelée lorsque l'utilisateur sélectionne un genre dans la boîte de sélection. Celle-ci doit retourner une liste de films contenant le genre reçu en paramètre: genreFilter
 
 
 }
-var displayMovie = function(movie){
+var displayMovie = function(movie){			//appelée lorsque l'application à besoin d'afficher un film. Celle-ci doit retourner un objet JavaScript particulier.
 
 
 }
