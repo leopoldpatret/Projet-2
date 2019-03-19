@@ -22,7 +22,7 @@ var sortMovies = function (movies,isAscending){			//retourner une liste de films
 
 
 }
-var populateSelect = function( movies ) {			//retourner une liste de tous les genres (string) disponibles
+var populateSelect = function(movies) {			//retourner une liste de tous les genres (string) disponibles
 
 
 }
@@ -34,3 +34,4 @@ var displayMovie = function(movie){			//appelée lorsque l'application à besoin
 
 
 }
+
