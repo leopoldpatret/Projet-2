@@ -3,8 +3,17 @@
 
 		//// DIFFERENTES FONCTIONS ////
 var validateUsername= function (value){			//valider le nom d'utilisateur
-
-
+var id1 = value.charAt(0);
+var id2 = value.charAt(1);
+var id3 = value.charAt(2);
+var id4 = value.charAt(3);
+var id5 = value.charAt(4);
+var verifid1 = (id1.match(/[A-Za-z]/)!=null);
+var verifid2 = (id2.match(/[A-Za-z]/)!=null);
+var verifid3 = (id3.match(/[A-Za-z]/)!=null);
+var verifid4 = (id4.match(/[A-Za-z]/)!=null);
+var verifid5 = (id5.match(/[A-Za-z]/)!=null);
+var estValide=(verifid1 && verifid2 && verifid3 && verifid4 && verifid5);  // sa fait un peu beaucoup de variable je pense XD
 }
 var validatePassword= function (value){			//valider le mot de passe
 
