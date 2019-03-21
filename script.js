@@ -13,7 +13,7 @@ var verifid2 = (id2.match(/[A-Za-z]/)!=null);
 var verifid3 = (id3.match(/[A-Za-z]/)!=null);
 var verifid4 = (id4.match(/[A-Za-z]/)!=null);
 var verifid5 = (id5.match(/[A-Za-z]/)!=null);
-var estValide=(verifid1 && verifid2 && verifid3 && verifid4 && verifid5);  // sa fait un peu beaucoup de variable je pense XD
+var estValide=(verifid1 && verifid2 && verifid3 && verifid4 && verifid5);  // sa fait un peu beaucoup de variable je pense XD je me suis inspiré de notre devoir 2
 }
 var validatePassword= function (value){			//valider le mot de passe
 
