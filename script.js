@@ -14,6 +14,21 @@ var verifid3 = (id3.match(/[A-Za-z]/)!=null);
 var verifid4 = (id4.match(/[A-Za-z]/)!=null);
 var verifid5 = (id5.match(/[A-Za-z]/)!=null);
 var estValide=(verifid1 && verifid2 && verifid3 && verifid4 && verifid5);  // non en faite faut creer un tableau c'est pas juste ce aue j'ai fait 
+
+
+var validateUsername= function (value){ // c'est plus un truc comme sa je pense que ce que j'ai fait juste au dessus 
+for (var i=0;i<value.length;i++){
+var tab = [];
+var letre= value.charAt(i);
+tab.push(letre);
+
+}
+}
+
+
+
+
+
 var validatePassword= function (value){			//valider le mot de passe
 
 
