@@ -19,12 +19,14 @@ var validateUsername = function(value) {
 
 var validateUsername = function(value) {
   // c'est plus un truc comme sa je pense que ce que j'ai fait juste au dessus
-  for (var i = 0; i < value.length; i++) {
+  var value= "fefsoijfe";
+for (var i = 0; i < value.length; i++) {
     var tab = [[i]];
     var letre = value.charAt(i);
     tab.push(letre);
-  }
-};
+    tab.forEach(function(element) {
+        console.log(element);
+    });}
 
 var validatePassword = function(value) {
   //valider le mot de passe
