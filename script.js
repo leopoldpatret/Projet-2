@@ -18,7 +18,7 @@ var estValide=(verifid1 && verifid2 && verifid3 && verifid4 && verifid5);  // no
 
 var validateUsername= function (value){ // c'est plus un truc comme sa je pense que ce que j'ai fait juste au dessus 
 for (var i=0;i<value.length;i++){
-var tab = [];
+var tab= [[i]];
 var letre= value.charAt(i);
 tab.push(letre);
 
