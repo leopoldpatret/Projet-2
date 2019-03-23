@@ -2,17 +2,28 @@
 //Équipier 2 : Leopold Patret - 20137744
 
 //// DIFFERENTES FONCTIONS ////
-var validateUsername = function(value) {  // ce code permet déjà de verrifier les 5 premier caractere entrée et deteminer si c'est bien des lettre min ou maj
+var valideUsername = function (value){ 
 for (var i = 0; i < 5; i++) {
     var tab= [[i]];
     var letre = value.charAt(i);
     tab.push(letre);
     var verif=tab[1].charCodeAt(0);
-    print(tab[1]);
 if ((verif>=65&&verif<=90)||(verif>=97&&verif<=122)){
     alert("good");// juste pour les test , a changer 
 }else{
     alert("bad");// "         "
+}
+}
+for (var i = 5; i < value.length; i++){
+  var tab2= [[i]];
+    var chltr = value.charAt(i);
+    tab.push(chltr);
+    var verif2=chltr.charCodeAt(0);
+if (((verif2>=65&&verif2<=90)||(verif2>=97&&verif2<=122)||(verif2>=48&&verif2<=57))){
+   alert("good");
+}else{
+   alert("bad");
+}
 }
 }
 
