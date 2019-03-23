@@ -25,6 +25,9 @@ if (((verif2>=65&&verif2<=90)||(verif2>=97&&verif2<=122)||(verif2>=48&&verif2<=5
    alert("bad");
 }
 }
+/*ici pour ensuite faire les test de verification pour les adresse mail il faudra utiliser .length-(longueur des 3 adresse mais possible et verrfier que c'est bien 
+celle-ci qui ont été renté dans la code par la manière des numéro ASCI ou alors avec coparaison direct avec le stringet ensuite la fonction de validation de l'identifiant ser
+complète)*/
 }
 
 var validatePassword = function(value) {
