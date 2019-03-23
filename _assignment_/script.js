@@ -2,31 +2,19 @@
 //Équipier 2 : Leopold Patret - 20137744
 
 //// DIFFERENTES FONCTIONS ////
-var validateUsername = function(value) {
-  //valider le nom d'utilisateur
-  var id1 = value.charAt(0);
-  var id2 = value.charAt(1);
-  var id3 = value.charAt(2);
-  var id4 = value.charAt(3);
-  var id5 = value.charAt(4);
-  var verifid1 = id1.match(/[A-Za-z]/) != null;
-  var verifid2 = id2.match(/[A-Za-z]/) != null;
-  var verifid3 = id3.match(/[A-Za-z]/) != null;
-  var verifid4 = id4.match(/[A-Za-z]/) != null;
-  var verifid5 = id5.match(/[A-Za-z]/) != null;
-  var estValide = verifid1 && verifid2 && verifid3 && verifid4 && verifid5; // non en faite faut creer un tableau c'est pas juste ce aue j'ai fait
-};
-
-var validateUsername = function(value) {
-  // c'est plus un truc comme sa je pense que ce que j'ai fait juste au dessus
-  var value= "fefsoijfe";
-for (var i = 0; i < value.length; i++) {
-    var tab = [[i]];
+var validateUsername = function(value) {  // ce code permet déjà de verrifier les 5 premier caractere entrée et deteminer si c'est bien des lettre min ou maj
+for (var i = 0; i < 5; i++) {
+    var tab= [[i]];
     var letre = value.charAt(i);
     tab.push(letre);
-    tab.forEach(function(element) {
-        console.log(element);
-    });}
+    var verif=tab[1].charCodeAt(0);
+    print(tab[1]);
+if ((verif>=65&&verif<=90)||(verif>=97&&verif<=122)){
+    alert("good");// juste pour les test , a changer 
+}else{
+    alert("bad");// "         "
+}
+}
 
 var validatePassword = function(value) {
   //valider le mot de passe
