@@ -2,33 +2,39 @@
 //Équipier 2 : Leopold Patret - 20137744
 
 //// DIFFERENTES FONCTIONS ////
-var valideUsername = function (value){ 
-for (var i = 0; i < 5; i++) {
-    var tab= [[i]];
-    var letre = value.charAt(i);
-    tab.push(letre);
-    var verif=tab[1].charCodeAt(0);
-if ((verif>=65&&verif<=90)||(verif>=97&&verif<=122)){
-    alert("good");// juste pour les test , a changer 
-}else{
-    alert("bad");// "         "
-}
-}
-for (var i = 5; i < value.length; i++){
-  var tab2= [[i]];
-    var chltr = value.charAt(i);
-    tab.push(chltr);
-    var verif2=chltr.charCodeAt(0);
-if (((verif2>=65&&verif2<=90)||(verif2>=97&&verif2<=122)||(verif2>=48&&verif2<=57))){
-   alert("good");
-}else{
-   alert("bad");
-}
-}
-/*ici pour ensuite faire les test de verification pour les adresse mail il faudra utiliser .length-(longueur des 3 adresse mais possible et verrfier que c'est bien 
-celle-ci qui ont été renté dans la code par la manière des numéro ASCI ou alors avec coparaison direct avec le stringet ensuite la fonction de validation de l'identifiant ser
-complète)*/
-}
+
+/* La fonction doit se nommer validateUsername*/
+
+/**
+ * Vérifie si le username est valide
+ *
+ * @param {string} value : text in username area.
+ *
+ */
+
+var validateUsername = function(value) {
+  //On vérifie si c'est un courriel
+  var finCourrielValide = ["@homeflix.ca", "@homeflix.com", "@homeflix.org"];
+  if (value.indexOf("@") == -1) {
+    var cond1 = value.length >= 5; //Verifie si taille est plus que 5
+    var cond2 = value.slice(0, 5).match(/^[a-zA-Z]+$/g) != null; //Verifie si 5 premiers caracteres sont juste des lettres
+    var cond3 = value.slice(5).match(/^[a-zA-Z0-9]*$/g) != null; //Verifie si le reste est juste des lettres ou chiffres
+
+    return cond1 && cond2 && cond3;
+  } else {
+    var cond1Tab = finCourrielValide.map(function(mailEnd) {
+      return value.indexOf(mailEnd) + mailEnd.length == value.length;
+    });
+    var cond1 = cond1Tab.indexOf(true) != -1; //Verifie si le courriel finit avec une des fins valides
+
+    if (cond1) {
+      var cond2 = value.slice(0, cond1).match(/^[a-zA-Z0-9.]+$/g) != null;
+      return cond2;
+    }
+
+    return cond1;
+  }
+};
 
 var validatePassword = function(value) {
   //valider le mot de passe
