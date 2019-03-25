@@ -13,8 +13,8 @@
  */
 
 var validateUsername = function(value) {
-  //On vérifie si c'est un courriel
   var finCourrielValide = ["@homeflix.ca", "@homeflix.com", "@homeflix.org"];
+  //Verifie si c'est un courriel
   if (value.indexOf("@") == -1) {
     var cond1 = value.length >= 5; //Verifie si taille est plus que 5
     var cond2 = value.slice(0, 5).match(/^[a-zA-Z]+$/g) != null; //Verifie si 5 premiers caracteres sont juste des lettres
@@ -36,8 +36,30 @@ var validateUsername = function(value) {
   }
 };
 
+/**
+ * Vérifie si le mot de passe est valide
+ *
+ * @param {string} value : text in password area.
+ *
+ */
+
 var validatePassword = function(value) {
-  //valider le mot de passe
+  var cond1 = value.length >= 8 && value.length <= 16; //Verifie si entre 8 et 16 caracteres inclus
+
+  //Verifie si contient les caracteres que l'on veut verifier
+  var cond2a = value.match(/[A-Z]/g) != null;
+  var cond2b = value.match(/[!-/:-@[-`{-~]/g) != null;
+  var cond2c = value.match(/[0-9]/g) != null;
+
+  if (cond2a && cond2b && cond2c) {
+    var cond3 = value.match(/[A-Z]/g).length >= 1; //Verifie s'il y a au moins 1 majuscule
+    var cond4 = value.match(/[0-9]/g).length >= 1; //Verifie s'il y a au moins 1 chiffre
+    var cond5 = value.match(/[!-/:-@[-`{-~]/g).length >= 1; //Verifie s'il y a au moins 1 caractere special
+
+    return cond1 && cond3 && cond4 && cond5;
+  }
+
+  return false;
 };
 var updateHeader = function(username) {
   //mettre à jour le nom d'utilisateur dans le <header>
