@@ -61,8 +61,19 @@ var validatePassword = function(value) {
 
   return false;
 };
+
+/**
+ * Insère le nom d'utilisateur de la personne qui vient de se connecter dans le header
+ *
+ * @param {string} username : nom d'utilisateur.
+ *
+ */
 var updateHeader = function(username) {
   //mettre à jour le nom d'utilisateur dans le <header>
+
+  var headerUser = document.getElementById("username");
+
+  headerUser.innerHTML = username;
 };
 var searchMovies = function(movies, searchValue) {
   //retourner une liste de films dont le titre contient les caractères tappés dans la barre de recherche.
