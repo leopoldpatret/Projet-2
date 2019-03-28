@@ -6,7 +6,7 @@
 /* La fonction doit se nommer validateUsername*/
 
 /**
- * Vérifie si le username est valide
+ * Retourne un booléen disant si le username est valide
  *
  * @param {string} value : text in username area.
  *
@@ -37,7 +37,7 @@ var validateUsername = function(value) {
 };
 
 /**
- * Vérifie si le mot de passe est valide
+ * Retourne un booléen disant si le mot de passe est valide
  *
  * @param {string} value : text in password area.
  *
@@ -69,17 +69,34 @@ var validatePassword = function(value) {
  *
  */
 var updateHeader = function(username) {
-  //mettre à jour le nom d'utilisateur dans le <header>
-
   var headerUser = document.getElementById("username");
 
   headerUser.innerHTML = username;
 };
+
+/**
+ * Retourne une liste de films, dont le titre contient les caractères
+ * tappés dans la barre de recherche
+ *
+ * @param {[string]} movies : liste de films disponibles
+ * @param {string} searchValue : text in search area
+ *
+ */
+
 var searchMovies = function(movies, searchValue) {
-  //retourner une liste de films dont le titre contient les caractères tappés dans la barre de recherche.
+  searchValue.toLowerCase(); //Pour considérer toutes les options
+  var moviesSearched = movies.filter(function(element) {
+    var majElement = element.toLowerCase();
+
+    if (majElement.indexOf(searchValue) != -1) {
+      return element;
+    }
+  });
+
+  return moviesSearched;
 };
 var sortMovies = function(movies, isAscending) {
-  //retourner une liste de films triée.
+  return movies;
 };
 var populateSelect = function(movies) {
   //retourner une liste de tous les genres (string) disponibles
