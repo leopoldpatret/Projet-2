@@ -96,17 +96,16 @@ var searchMovies = function(movies, searchValue) {
   return moviesSearched;
 };
 var sortMovies = function(movies, isAscending) {
-   movies=movies.sort();
-if (isAscending== true){
-return movies ;
-}else{
-  if (isAscending==false){
-    movies= movies.reverse();
-  return movies ;
+  movies = movies.sort();
+  if (isAscending == true) {
+    return movies;
+  } else {
+    if (isAscending == false) {
+      return movies.reverse();
+    }
   }
- }
 };
-var populateSelect = function(movies) {
+/*var populateSelect = function(movies) {
   //retourner une liste de tous les genres (string) disponibles
   var listegenre=[""];
   var moviegenre="";// a compléter
@@ -117,14 +116,13 @@ var populateSelect = function(movies) {
     continue
   }
  }
-};
+};*/
 var filterMovies = function(movies, genreFilter) {
   //appelée lorsque l'utilisateur sélectionne un genre dans la boîte de sélection. Celle-ci doit retourner une liste de films contenant le genre reçu en paramètre: genreFilter
 };
 var displayMovie = function(movie) {
   //appelée lorsque l'application à besoin d'afficher un film. Celle-ci doit retourner un objet JavaScript particulier.
 };
-
 
 // test pour la fonction sortMovie sur codeboot
 /*
