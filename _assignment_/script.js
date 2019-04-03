@@ -119,9 +119,6 @@ var displayMovie = function(movie) {
 
 // test pour la fonction sortMovie sur codeboot
 /*
-var movies=
-    movies=["Leo","Pold","Pat","Avenger","Spiderman","Game of thrones","Batman"];
-var isAscending= false;
 var sortMovies = function(movies, isAscending) {
    movies=movies.sort();
 if (isAscending== true){
@@ -134,4 +131,5 @@ return movies ;
 }
     print(movies);
 };
-sortMovies(movies, isAscending);*/
+sortMovies(["Leo","pold","Pat","tret",Avenger","Spiderman","Game of thrones","Batman"], false);
+*/
