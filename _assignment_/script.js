@@ -96,10 +96,12 @@ var searchMovies = function(movies, searchValue) {
   return moviesSearched;
 };
 var sortMovies = function(movies, isAscending) {
+   movies=movies.sort();
 if (isAscending== true){
 return movies ;
 }else{
   if (isAscending==false){
+    movies= movies.reverse();
   return movies ;// Pas le bon return juste pour tester
   }
 }
