@@ -96,7 +96,21 @@ var searchMovies = function(movies, searchValue) {
   return moviesSearched;
 };
 var sortMovies = function(movies, isAscending) {
-  return movies;
+ var sorted=movies.sort();
+ console.log(movies);
+ if isAscending == true {
+  return sorted;
+}else{
+if isAscending == false {
+  var sorted=movies.sort();
+  console.log(movies);
+  var inverted=sorted.reversed();
+  console.log(reversed);
+  return reversed;
+
+}
+}
+
 };
 var populateSelect = function(movies) {
   //retourner une liste de tous les genres (string) disponibles
