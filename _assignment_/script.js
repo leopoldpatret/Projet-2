@@ -115,3 +115,23 @@ var filterMovies = function(movies, genreFilter) {
 var displayMovie = function(movie) {
   //appelée lorsque l'application à besoin d'afficher un film. Celle-ci doit retourner un objet JavaScript particulier.
 };
+
+
+// test pour la fonction sortMovie sur codeboot
+/*
+var movies=
+    movies=["Leo","Pold","Pat","Avenger","Spiderman","Game of thrones","Batman"];
+var isAscending= false;
+var sortMovies = function(movies, isAscending) {
+   movies=movies.sort();
+if (isAscending== true){
+return movies ;
+}else{
+  if (isAscending==false){
+    movies= movies.reverse();
+  return movies ;
+  }
+}
+    print(movies);
+};
+sortMovies(movies, isAscending);*/
