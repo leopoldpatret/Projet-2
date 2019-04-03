@@ -102,7 +102,7 @@ return movies ;
 }else{
   if (isAscending==false){
     movies= movies.reverse();
-  return movies ;// Pas le bon return juste pour tester
+  return movies ;
   }
 }
 };
