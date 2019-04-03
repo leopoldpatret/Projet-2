@@ -104,10 +104,19 @@ return movies ;
     movies= movies.reverse();
   return movies ;
   }
-}
+ }
 };
 var populateSelect = function(movies) {
   //retourner une liste de tous les genres (string) disponibles
+  var listegenre=[""];
+  var moviegenre="";// a compléter
+  for (var i=0;i<movie.length;i++){
+    if (for(var j=0;j<=i;j++)listegenre[j]!=moviegenre{
+    listegenre.push(moviegenre)
+  }else{
+    continue
+  }
+ }
 };
 var filterMovies = function(movies, genreFilter) {
   //appelée lorsque l'utilisateur sélectionne un genre dans la boîte de sélection. Celle-ci doit retourner une liste de films contenant le genre reçu en paramètre: genreFilter
