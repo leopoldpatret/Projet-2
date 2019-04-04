@@ -86,7 +86,7 @@ var updateHeader = function(username) {
 var searchMovies = function(movies, searchValue) {
   searchValue.toLowerCase(); //Pour considérer toutes les options
   var moviesSearched = movies.filter(function(element) {
-    var majElement = element.toLowerCase();
+    var majElement = element.title.toLowerCase();
 
     if (majElement.indexOf(searchValue) != -1) {
       return element;
@@ -96,7 +96,9 @@ var searchMovies = function(movies, searchValue) {
   return moviesSearched;
 };
 var sortMovies = function(movies, isAscending) {
-  movies = movies.sort();
+  movies = movies.sort(function(a, b) {
+    return a.title < b.title ? -1 : 1;
+  });
   if (isAscending == true) {
     return movies;
   } else {
@@ -105,18 +107,9 @@ var sortMovies = function(movies, isAscending) {
     }
   }
 };
-/*var populateSelect = function(movies) {
+var populateSelect = function(movies) {
   //retourner une liste de tous les genres (string) disponibles
-  var listegenre=[""];
-  var moviegenre="";// a compléter
-  for (var i=0;i<movie.length;i++){
-    if (for(var j=0;j<=i;j++)listegenre[j]!=moviegenre{
-    listegenre.push(moviegenre)
-  }else{
-    continue
-  }
- }
-};*/
+};
 var filterMovies = function(movies, genreFilter) {
   //appelée lorsque l'utilisateur sélectionne un genre dans la boîte de sélection. Celle-ci doit retourner une liste de films contenant le genre reçu en paramètre: genreFilter
 };
