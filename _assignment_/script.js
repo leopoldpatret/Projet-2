@@ -69,21 +69,20 @@ var validatePassword = function(value) {
  *
  */
 var updateHeader = function(username) {
-  var headerUser = document.getElementById("username");
-
-  headerUser.innerHTML = username;
+  document.getElementById("username").innerHTML = username;
 };
 
 /**
  * Retourne une liste de films, dont le titre contient les caractères
  * tappés dans la barre de recherche
  *
- * @param {[string]} movies : liste de films disponibles
+ * @param {[Object]} movies : liste de films disponibles
  * @param {string} searchValue : text in search area
  *
  */
 
 var searchMovies = function(movies, searchValue) {
+  console.log(movies[0]);
   searchValue.toLowerCase(); //Pour considérer toutes les options
   var moviesSearched = movies.filter(function(element) {
     var majElement = element.title.toLowerCase();
@@ -95,6 +94,16 @@ var searchMovies = function(movies, searchValue) {
 
   return moviesSearched;
 };
+
+/**
+ * Retourne une liste des films triés par titre
+ *
+ *
+ * @param {[Object]} movies : liste de films disponibles
+ * @param {boolean} isAscending : Ordre croissant ou non
+ *
+ */
+
 var sortMovies = function(movies, isAscending) {
   movies = movies.sort(function(a, b) {
     return a.title < b.title ? -1 : 1;
@@ -107,29 +116,47 @@ var sortMovies = function(movies, isAscending) {
     }
   }
 };
+
+/**
+ * Retourne une liste de tous les genres de films disponibles
+ *
+ *
+ * @param {[Object]} movies : liste de films disponibles
+ *
+ */
+
 var populateSelect = function(movies) {
-  //retourner une liste de tous les genres (string) disponibles
+  var listGenres = movies[0].genres;
+
+  for (var i = 1; i < movies.length; i++) {
+    movies[i].genres.forEach(function(genre) {
+      if (listGenres.indexOf(genre) == -1) listGenres.push(genre);
+    });
+  }
+
+  return listGenres;
 };
+
+/**
+ * Retourne une liste de tous les films contenant
+ * le genre recherché
+ *
+ * @param {[Object]} movies : liste de films disponibles
+ * @param {string} genreFilter : genre recherché
+ *
+ */
 var filterMovies = function(movies, genreFilter) {
-  //appelée lorsque l'utilisateur sélectionne un genre dans la boîte de sélection. Celle-ci doit retourner une liste de films contenant le genre reçu en paramètre: genreFilter
+  movies.filter(function(film) {
+    if (film.genres.indexOf(genreFilter) != -1) return film;
+  });
 };
+
+/**
+ * Retourne un objet JS particulier du film voulu
+ *
+ * @param {Object} movie : liste de films disponibles
+ *
+ */
 var displayMovie = function(movie) {
   //appelée lorsque l'application à besoin d'afficher un film. Celle-ci doit retourner un objet JavaScript particulier.
 };
-
-// test pour la fonction sortMovie sur codeboot
-/*
-var sortMovies = function(movies, isAscending) {
-   movies=movies.sort();
-if (isAscending== true){
-return movies ;
-}else{
-  if (isAscending==false){
-    movies= movies.reverse();
-  return movies ;
-  }
-}
-    print(movies);
-};
-sortMovies(["Leo","pold","Pat","tret",Avenger","Spiderman","Game of thrones","Batman"], false);
-*/
