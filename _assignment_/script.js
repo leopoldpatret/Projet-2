@@ -157,8 +157,17 @@ var filterMovies = function(movies, genreFilter) {
  * @param {Object} movie : liste de films disponibles
  *
  */
+
+var SHOW_SAMPLE = true;
+
 var displayMovie = function(movie) {
-  //appelée lorsque l'application à besoin d'afficher un film. Celle-ci doit retourner un objet JavaScript particulier.
+  var acronyme = "";
+  movie.title
+    .split(" ")
+    .slice(0, 3)
+    .forEach(function(titleWord) {
+      acronyme += titleWord[0];
+    }); //Fonctionne tester avec console.log
 };
 /*
 <div class="c-main_item_card">
