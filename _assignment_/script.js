@@ -167,8 +167,26 @@ var displayMovie = function(movie) {
     .slice(0, 3)
     .forEach(function(titleWord) {
       acronyme += titleWord[0];
-    }); //Fonctionne tester avec console.log
+    });//Fonctionne tester avec console.log
+  var longueur = "";
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 <div class="c-main_item_card">
 <div class="c-main_item_cover -red">
