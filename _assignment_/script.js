@@ -171,7 +171,7 @@ var displayMovie = function(movie) {
     .slice(0, 3)
     .forEach(function(titleWord) {
       acronyme += titleWord[0];
-    }); //Fonctionne tester avec console.log
+    });
 
   /*Définir tous les éléments nécessaires */
   var movieContainer = document.createElement("div");
