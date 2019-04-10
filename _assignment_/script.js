@@ -160,6 +160,10 @@ var filterMovies = function(movies, genreFilter) {
 
 var SHOW_SAMPLE = true;
 
+/* Différentes couleurs:
+.c-main_item_cover.(-red | -blue | -green
+  -orange | -yellow | -purple)*/
+
 var displayMovie = function(movie) {
   var acronyme = "";
   movie.title
@@ -167,59 +171,90 @@ var displayMovie = function(movie) {
     .slice(0, 3)
     .forEach(function(titleWord) {
       acronyme += titleWord[0];
-      var acr= document.createElement("p");
-      acr.className="c-main_item_preview";
-      acr.innerHTML=acronyme;
-    });//Fonctionne tester avec console.log
+    }); //Fonctionne tester avec console.log
 
+  /*Définir tous les éléments nécessaires */
+  var movieContainer = document.createElement("div");
+  movieContainer.className = "c-main_item_card";
+
+  var movieTitle = document.createElement("h2");
+  movieTitle.className = "c-main_item_title";
+  movieTitle.title = movie.title;
+  movieTitle.innerHTML = movie.title;
+
+  var movieCover = document.createElement("div");
+  movieCover.className = "c-main_item_cover -red";
+
+  var acr = document.createElement("p");
+  acr.className = "c-main_item_preview";
+  acr.innerHTML = acronyme;
+
+  var movieDetails = document.createElement("div");
+  movieDetails.className = "c-main_item_details";
+
+  var createDetails = function(header, tag, inner) {
+    var h3 = document.createElement("h3");
+    h3.className = "c=main_item_header";
+    h3.innerHTML = header;
+
+    var description = document.createElement(tag);
+
+    if (tag == "p") {
+      description.className = "c-main_item_text";
+    } else description.className = "c-main_item_span";
+
+    description.innerHTML = inner;
+
+    return [h3, description];
+  };
+
+  var titre = createDetails("Title :", "p", movie.title);
+  var genre = createDetails("Genres :", "p", movie.genres.toString());
+  var synopsis = createDetails("Synopsis :", "p", movie.overview);
+
+  //Ajout des ... si trop long
+  synopsis[1].style.textOverflow = "ellipsis";
+  synopsis[1].style.overflow = "hidden";
+
+  var innerDuree =
+    movie.runtime % 60 < 10
+      ? Math.floor(movie.runtime / 60) + "h0" + (movie.runtime % 60) + "min"
+      : Math.floor(movie.runtime / 60) + "h" + (movie.runtime % 60) + "min";
+
+  var duree = createDetails("Length :", "span", innerDuree);
+  var langage = createDetails(
+    "Language :",
+    "span",
+    movie.language.toUpperCase()
+  );
+
+  var rating = createDetails("Rating :", "span", movie.rating + "/10");
+
+  /*Relier les éléments en 1 objet HTML */
+
+  var appendFunction = function(parent, child, childIsArray) {
+    if (childIsArray)
+      child.forEach(function(el) {
+        parent.appendChild(el);
+      });
+    else parent.appendChild(child);
+  };
+
+  //Pour la section movieDetails
+  appendFunction(movieDetails, titre, true);
+  appendFunction(movieDetails, genre, true);
+  appendFunction(movieDetails, synopsis, true);
+  appendFunction(movieDetails, duree, true);
+  appendFunction(movieDetails, langage, true);
+  appendFunction(movieDetails, rating, true);
+
+  //Pour la section movieCover
+  appendFunction(movieCover, acr, false);
+  appendFunction(movieCover, movieDetails, false);
+
+  //Pour la section movieContainer
+  appendFunction(movieContainer, movieCover, false);
+  appendFunction(movieContainer, movieTitle, false);
+
+  return { title: movie.title, genres: movie.genres, element: movieContainer };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-<div class="c-main_item_card">
-<div class="c-main_item_cover -red">
-<p class="c-main_item_preview">S</p>
-<div class="c-main_item_details">
-<h3 class="c-main_item_header">Title :</h3>
-<p class="c-main_item_text">Sample</p>
-<h3 class="c-main_item_header">Genre :</h3>
-<p class="c-main_item_text">Action, Funny, Drama</p>
-<h3 class="c-main_item_header">Synopsis :</h3>
-<p class="c-main_item_text">
-Some amazing content full of interesting things and cool text that will deeply affect your life.
-</p>
-<h3 class="c-main_item_header">
-        Length :
-        <span class="c-main_item_span">2h05min</span>
-        </h3><h3 class="c-main_item_header">
-        Language :
-        <span class="c-main_item_span">EN</span>
-        </h3><h3 class="c-main_item_header">
-        Rating :
-        <span class="c-main_item_span">9.7 / 10</span>
-        </h3>
-        </div>
-        </div>
-        <h2 title="Sample" class="c-main_item_title">Sample</h2>
-        </div>
-
-
-         tout sa c'est le code html que le site utilise pour afficher l'échantillon qui est donnée dans la consigne 
-         on vas donc devoir utiliser toute les classe qui son la et les remplir pour chaque film je sais pas si on sépare chaque 
-         variable (genre, duree, rating, ...) ou si on essaye de faire un fonction dans la fonction qui va etre utilisé pour l'affichage.
-*/
