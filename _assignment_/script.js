@@ -169,14 +169,17 @@ var displayMovie = function(movie) {
       acronyme += titleWord[0]; });//Fonctionne tester avec console.log
   var titre =;
   var dgenre=;
+
   var synopsis=;
+  /*if (overview.length>170)
+    overview=overview.slice(0, 170)+"...";*/
   
   var durée=;
-  var h = Math.floor(runtime / 60);
+  /*var h = Math.floor(runtime / 60);
   var m = runtime % 60;
   h = h < 10 ? '0' + h : h;
   m = m < 10 ? '0' + m : m;
-  var temphm = h+"h"+m+"min";//tranforme les minutes qui sont données en heures/min
+  var temphm = h+"h"+m+"min";//tranforme les minutes qui sont données en heures/min*/
 
   var langue=;
   var note=;
