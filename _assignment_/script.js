@@ -146,9 +146,11 @@ var populateSelect = function(movies) {
  *
  */
 var filterMovies = function(movies, genreFilter) {
-  movies.filter(function(film) {
+  var filtre = movies.filter(function(film) {
     if (film.genres.indexOf(genreFilter) != -1) return film;
   });
+
+  return filtre;
 };
 
 /**
@@ -165,6 +167,8 @@ var SHOW_SAMPLE = true;
   -orange | -yellow | -purple)*/
 
 var displayMovie = function(movie) {
+  var colors = ["-red", "-blue", "-green", "-orange", "-yellow", "-purple"];
+
   var acronyme = "";
   movie.title
     .split(" ")
@@ -183,18 +187,20 @@ var displayMovie = function(movie) {
   movieTitle.innerHTML = movie.title;
 
   var movieCover = document.createElement("div");
-  movieCover.className = "c-main_item_cover -red";
+  movieCover.className =
+    "c-main_item_cover " +
+    colors[Math.floor(Math.random() * (colors.length + 1))];
 
   var acr = document.createElement("p");
   acr.className = "c-main_item_preview";
-  acr.innerHTML = acronyme;
+  acr.innerHTML = acronyme.toUpperCase();
 
   var movieDetails = document.createElement("div");
   movieDetails.className = "c-main_item_details";
 
   var createDetails = function(header, tag, inner) {
     var h3 = document.createElement("h3");
-    h3.className = "c=main_item_header";
+    h3.className = "c-main_item_header";
     h3.innerHTML = header;
 
     var description = document.createElement(tag);
@@ -212,9 +218,13 @@ var displayMovie = function(movie) {
   var genre = createDetails("Genres :", "p", movie.genres.toString());
   var synopsis = createDetails("Synopsis :", "p", movie.overview);
 
+  /*Il reste seulement à ajuster la taille de synopsis et genre */
+
   //Ajout des ... si trop long
+  /*
+  synopsis[1].style.whiteSpace = "nowrap";
   synopsis[1].style.textOverflow = "ellipsis";
-  synopsis[1].style.overflow = "hidden";
+  synopsis[1].style.overflow = "hidden";*/
 
   var innerDuree =
     movie.runtime % 60 < 10
