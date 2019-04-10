@@ -82,7 +82,6 @@ var updateHeader = function(username) {
  */
 
 var searchMovies = function(movies, searchValue) {
-  console.log(movies[0]);
   searchValue.toLowerCase(); //Pour considérer toutes les options
   var moviesSearched = movies.filter(function(element) {
     var majElement = element.title.toLowerCase();
@@ -111,9 +110,7 @@ var sortMovies = function(movies, isAscending) {
   if (isAscending == true) {
     return movies;
   } else {
-    if (isAscending == false) {
-      return movies.reverse();
-    }
+    return movies.reverse();
   }
 };
 
@@ -133,6 +130,8 @@ var populateSelect = function(movies) {
       if (listGenres.indexOf(genre) == -1) listGenres.push(genre);
     });
   }
+
+  listGenres.sort();
 
   return listGenres;
 };
@@ -215,7 +214,11 @@ var displayMovie = function(movie) {
   };
 
   var titre = createDetails("Title :", "p", movie.title);
-  var genre = createDetails("Genres :", "p", movie.genres.toString());
+  var genre = createDetails(
+    "Genres :",
+    "p",
+    movie.genres.slice(0, 3).toString() + "..."
+  );
   var synopsis = createDetails("Synopsis :", "p", movie.overview);
 
   /*Il reste seulement à ajuster la taille de synopsis et genre */
