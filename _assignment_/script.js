@@ -219,16 +219,10 @@ var displayMovie = function(movie) {
     "p",
     movie.genres.slice(0, 3).toString() + "..."
   );
-  var synopsis = createDetails("Synopsis :", "p", movie.overview);
-
-  /*Il reste seulement à ajuster la taille de synopsis et genre */
-
-  //Ajout des ... si trop long
-  /*
-  synopsis[1].style.whiteSpace = "nowrap";
-  synopsis[1].style.textOverflow = "ellipsis";
-  synopsis[1].style.overflow = "hidden";*/
-
+  var synopsisraw =movie.overview; 
+  var synopsis2 = synopsisraw.substr(0, 125);
+  var synopsis = createDetails("Synopsis :", "p", synopsis2.substr(0, Math.min(synopsis2.length, synopsis2.lastIndexOf(" ")))+"...");
+  
   var innerDuree =
     movie.runtime % 60 < 10
       ? Math.floor(movie.runtime / 60) + "h0" + (movie.runtime % 60) + "min"
