@@ -166,11 +166,26 @@ var displayMovie = function(movie) {
     .split(" ")
     .slice(0, 3)
     .forEach(function(titleWord) {
-      acronyme += titleWord[0];
-      var acr= document.createElement("p");
-      acr.className="c-main_item_preview";
-      acr.innerHTML=acronyme;
-    });//Fonctionne tester avec console.log
+      acronyme += titleWord[0]; });//Fonctionne tester avec console.log
+  var titre =;
+  var dgenre=;
+  var synopsis=;
+  
+  var durée=;
+  var h = Math.floor(runtime / 60);
+  var m = runtime % 60;
+  h = h < 10 ? '0' + h : h;
+  m = m < 10 ? '0' + m : m;
+  var temphm = h+"h"+m+"min";//tranforme les minutes qui sont données en heures/min
+
+  var langue=;
+  var note=;
+  
+
+  
+  
+  
+
 
 };
 
