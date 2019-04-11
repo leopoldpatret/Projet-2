@@ -226,6 +226,7 @@ var displayMovie = function(movie) {
 
       return h3;
     }
+    
   };
 
   var titre = createDetails("Title :", "p", movie.title);
