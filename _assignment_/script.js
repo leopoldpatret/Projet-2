@@ -206,7 +206,7 @@ var displayMovie = function(movie) {
 
     if (tag == "p") {
       description.className = "c-main_item_text";
-    } else description.className = "c-main_item_span";
+    } else description.className = "c-main_item_span";// ici il y a un problème je pense et c'est pour sa que l'affichage n'est pas correct pour la durée, note et langue 
 
     description.innerHTML = inner;
 
