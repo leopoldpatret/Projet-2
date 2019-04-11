@@ -197,6 +197,14 @@ var displayMovie = function(movie) {
   var movieDetails = document.createElement("div");
   movieDetails.className = "c-main_item_details";
 
+  var appendFunction = function(parent, child, childIsArray) {
+    if (childIsArray)
+      child.forEach(function(el) {
+        parent.appendChild(el);
+      });
+    else parent.appendChild(child);
+  };
+
   var createDetails = function(header, tag, inner) {
     var h3 = document.createElement("h3");
     h3.className = "c-main_item_header";
@@ -206,54 +214,62 @@ var displayMovie = function(movie) {
 
     if (tag == "p") {
       description.className = "c-main_item_text";
-    } else description.className = "c-main_item_span";
+      description.style.textOverflow = "ellipsis";
+      description.style.whiteSpace = "nowrap";
+      description.style.overflow = "hidden";
+      description.innerHTML = inner;
+      return [h3, description];
+    } else {
+      description.className = "c-main_item_span";
+      description.innerHTML = inner;
+      appendFunction(h3, description);
 
-    description.innerHTML = inner;
-
-    return [h3, description];
+      return h3;
+    }
   };
 
   var titre = createDetails("Title :", "p", movie.title);
   var genre = createDetails(
-    "Genres :",
+    "Genre :",
     "p",
-    movie.genres.slice(0, 3).toString() + "..."
+    movie.genres.toString().replace(/,/g, ", ") + "..."
   );
-  var synopsisraw =movie.overview; 
+
+  /*Il manque juste à ajuster le synopsis */
+  var synopsisraw = movie.overview;
   var synopsis2 = synopsisraw.substr(0, 125);
-  var synopsis = createDetails("Synopsis :", "p", synopsis2.substr(0, Math.min(synopsis2.length, synopsis2.lastIndexOf(" ")))+"...");
-  
+  var synopsis = createDetails(
+    "Synopsis :",
+    "p",
+    synopsis2.substr(
+      0,
+      Math.min(synopsis2.length, synopsis2.lastIndexOf(" "))
+    ) + "..."
+  );
+
   var innerDuree =
     movie.runtime % 60 < 10
       ? Math.floor(movie.runtime / 60) + "h0" + (movie.runtime % 60) + "min"
       : Math.floor(movie.runtime / 60) + "h" + (movie.runtime % 60) + "min";
 
-  var duree = createDetails("Length :", "span", innerDuree);
+  var duree = createDetails("Length :", "span", " " + innerDuree);
   var langage = createDetails(
     "Language :",
     "span",
-    movie.language.toUpperCase()
+    " " + movie.language.toUpperCase()
   );
 
-  var rating = createDetails("Rating :", "span", movie.rating + "/10");
+  var rating = createDetails("Rating :", "span", " " + movie.rating + "/10");
 
   /*Relier les éléments en 1 objet HTML */
-
-  var appendFunction = function(parent, child, childIsArray) {
-    if (childIsArray)
-      child.forEach(function(el) {
-        parent.appendChild(el);
-      });
-    else parent.appendChild(child);
-  };
 
   //Pour la section movieDetails
   appendFunction(movieDetails, titre, true);
   appendFunction(movieDetails, genre, true);
   appendFunction(movieDetails, synopsis, true);
-  appendFunction(movieDetails, duree, true);
-  appendFunction(movieDetails, langage, true);
-  appendFunction(movieDetails, rating, true);
+  appendFunction(movieDetails, duree, false);
+  appendFunction(movieDetails, langage, false);
+  appendFunction(movieDetails, rating, false);
 
   //Pour la section movieCover
   appendFunction(movieCover, acr, false);
