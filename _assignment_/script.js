@@ -105,7 +105,7 @@ var searchMovies = function(movies, searchValue) {
 
 var sortMovies = function(movies, isAscending) {
   movies = movies.sort(function(a, b) {
-    return a.title < b.title ? -1 : 1;
+    return a.title.toUpperCase() < b.title.toUpperCase() ? -1 : 1;
   });
   if (isAscending == true) {
     return movies;
