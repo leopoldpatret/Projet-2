@@ -214,9 +214,11 @@ var displayMovie = function(movie) {
 
     if (tag == "p") {
       description.className = "c-main_item_text";
-      description.style.textOverflow = "ellipsis";
-      description.style.whiteSpace = "nowrap";
-      description.style.overflow = "hidden";
+      if (header != "Synopsis :") {
+        description.style.textOverflow = "ellipsis";
+        description.style.whiteSpace = "nowrap";
+        description.style.overflow = "hidden";
+      }
       description.innerHTML = inner;
       return [h3, description];
     } else {
@@ -226,7 +228,6 @@ var displayMovie = function(movie) {
 
       return h3;
     }
-    
   };
 
   var titre = createDetails("Title :", "p", movie.title);
