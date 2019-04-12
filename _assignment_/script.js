@@ -158,9 +158,6 @@ var filterMovies = function(movies, genreFilter) {
  * @param {Object} movie : liste de films disponibles
  *
  */
-
-var SHOW_SAMPLE = true;
-
 /* Différentes couleurs:
 .c-main_item_cover.(-red | -blue | -green
   -orange | -yellow | -purple)*/
